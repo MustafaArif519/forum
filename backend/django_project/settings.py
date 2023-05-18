@@ -42,6 +42,11 @@ INSTALLED_APPS = [
     "corsheaders",
     "rest_framework.authtoken",
     "dj_rest_auth",
+    "dj_rest_auth.registration",
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
+    "drf_spectacular",
     # Accounts app
     "accounts.apps.AccountsConfig",
     "posts.apps.PostsConfig",
@@ -56,6 +61,13 @@ REST_FRAMEWORK = {
         "rest_framework.authentication.TokenAuthentication",
     ],
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+}
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": "Forum",
+    "DESCRIPTION": "A backend for an open source forum",
+    "VERSION": "1.0.0",
+    # Other settings if needed
 }
 
 MIDDLEWARE = [
@@ -89,6 +101,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                "django.template.context_processors.request",
             ],
         },
     },
