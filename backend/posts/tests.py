@@ -44,7 +44,7 @@ class BlogTests(TestCase):
         self.assertEqual(self.comment2.author.username, "testuser")
         self.assertEqual(self.comment2.post, self.post)
         self.assertEqual(self.comment2.body, "Nice body content # 2")
-        self.assertEqual(int(self.comment2), 2)
+        self.assertEqual(str(self.comment2), self.comment2.body)
 
     # def test_comment_reply_model(self):
     #     self.assertEqual(self.post.author.username, "testuser")
