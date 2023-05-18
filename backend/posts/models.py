@@ -21,8 +21,8 @@ class Comment(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    def __int__(self):
-        return self.id
+    def __str__(self):
+        return self.body
 
 class CommentReply(models.Model):
     body = models.TextField()
@@ -32,14 +32,14 @@ class CommentReply(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.id
+        return self.body
 
 class PostLike(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     post = models.ForeignKey(Post, on_delete=models.CASCADE, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
-    def __str__(self):
+    def __int__(self):
         return self.id
 
 class CommentLike(models.Model):
@@ -55,5 +55,5 @@ class CommentReplyLike(models.Model):
     comment_reply = models.ForeignKey(CommentReply, on_delete=models.CASCADE, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
-    def __str__(self):
+    def __int__(self):
         return self.id
