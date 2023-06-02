@@ -2,9 +2,8 @@ from rest_framework import viewsets
 from django.contrib.auth import get_user_model
 from rest_framework.permissions import IsAdminUser
 
-from .models import Post, Comment, CommentLike, PostLike, CommentReply, CommentReplyLike
-from .serializers import PostSerializer, UserSerializer, CommentSerializer, CommentReplySerializer,\
-                         PostLikeSerializer, CommentLikeSerializer, CommentReplyLikeSerializer
+from .models import Post, Comment, Like
+from .serializers import PostSerializer, UserSerializer, CommentSerializer, LikeSerializer
 from .permissions import IsAuthorOrReadOnly
 
 
@@ -18,25 +17,11 @@ class CommentViewSet(viewsets.ModelViewSet):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
 
-class CommentReplyViewSet(viewsets.ModelViewSet):
-    permission_classes = (IsAuthorOrReadOnly,)
-    queryset = CommentReply.objects.all()
-    serializer_class = CommentReplySerializer
 
-class PostLikeViewSet(viewsets.ModelViewSet):
+class LikeViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthorOrReadOnly,)
-    queryset = PostLike.objects.all()
-    serializer_class = PostLikeSerializer
-
-class CommentLikeViewSet(viewsets.ModelViewSet):
-    permission_classes = (IsAuthorOrReadOnly,)
-    queryset = CommentLike.objects.all()
-    serializer_class = CommentLikeSerializer
-
-class CommentReplyLikeViewSet(viewsets.ModelViewSet):
-    permission_classes = (IsAuthorOrReadOnly,)
-    queryset = CommentReplyLike.objects.all()
-    serializer_class = CommentReplyLikeSerializer
+    queryset = Like.objects.all()
+    serializer_class = LikeSerializer
 
 class UserViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAdminUser]

@@ -1,7 +1,7 @@
 from django.test import TestCase
 from django.contrib.auth import get_user_model
 
-from .models import Post, Comment, CommentReply, CommentLike, CommentReplyLike, PostLike
+from .models import Post, Comment, Like
 
 
 class BlogTests(TestCase):
