@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
+from accounts.views import GoogleLoginView, UserRedirectView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,6 +26,8 @@ urlpatterns = [
     path("api/v1/dj-rest-auth/", include("dj_rest_auth.urls")),
     path("api/v1/dj-rest-auth/registration/",
         include("dj_rest_auth.registration.urls")),
+     path("dj-rest-auth/google/login/", GoogleLoginView.as_view(), name="google_login"),
+     path("~redirect/", view=UserRedirectView.as_view(), name="redirect"),
     path("api/schema/", SpectacularAPIView.as_view(), name="schema"),
     path("api/schema/redoc/", SpectacularRedocView.as_view(url_name="schema"),
         name="redoc",),

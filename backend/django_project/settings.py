@@ -51,11 +51,14 @@ INSTALLED_APPS = [
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
+    "allauth.socialaccount.providers.google",
     "drf_spectacular",
     # Accounts app
     "accounts.apps.AccountsConfig",
     "posts.apps.PostsConfig",
 ]
+
+ACCOUNT_EMAIL_VERIFICATION = "none"
 
 REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": [
